@@ -14,4 +14,13 @@ class UserController extends Controller
 //        dd(response()->json($users));
         return response()->json($users);
     }
+
+    public function store()
+    {
+        return $user = User::create([
+            'name' => request('name'),
+            'email' => request('email'),
+            'password' => bcrypt(request('password')),
+        ]);
+    }
 }
